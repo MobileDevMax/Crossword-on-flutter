@@ -1,0 +1,65 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(CrosswordApp());
+}
+
+class CrosswordApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Crossword',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Crossword'),
+        ),
+        body: CrosswordGrid(),
+      ),
+    );
+  }
+}
+
+class CrosswordGrid extends StatelessWidget {
+  final List<List<String>> grid = [
+    [" ", " ", " ", "L", " ", " ", " ", " ", " ", " ", " "],
+    [" ", " ", "B", "O", "O", "K", " ", " ", " ", " ", " "],
+    [" ", " ", " ", "N", " ", " ", " ", " ", " ", " ", " "],
+    [" ", " ", " ", "D", " ", " ", " ", "C", " ", " ", " "],
+    [" ", "C", "R", "O", "S", "S", "W", "O", "R", "D", " "],
+    [" ", " ", " ", "N", " ", " ", " ", "L", " ", "A", " "],
+    [" ", " ", " ", " ", " ", " ", " ", "U", " ", "R", " "],
+    [" ", " ", " ", " ", "T", "E", "R", "M", "I", "T", "E"],
+    [" ", " ", " ", " ", "R", " ", " ", "B", " ", " ", " "],
+    [" ", " ", " ", " ", "O", " ", " ", "U", " ", " ", " "],
+    [" ", " ", " ", " ", "N", " ", " ", "S", " ", " ", " "],
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: grid.map((row) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: row.map((cell) {
+              return Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                ),
+                child: Center(
+                  child: Text(
+                    cell,
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+              );
+            }).toList(),
+          );
+        }).toList(),
+      ),
+    );
+  }
+}
